@@ -2,11 +2,12 @@ import Label from './Base/label'
 import Input from './Base/input'
 import Errormsg from './Base/errorMsg'
 
-export default function Formgroup({form, handleChange, formval, register, control, error}){
+
+export default function Formgroup({form, register, control, error}){
     return (
         <div className='mb-6'>
             <Label form={form} />
-            <Input form={form} inputVal={formval[form.name]} control={control} register={register} handleChange={handleChange}/>
+            <Input form={form} control={control} register={register}/>
             <Errormsg err={error} form={form} />
         </div>
     )
