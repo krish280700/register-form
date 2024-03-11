@@ -1,0 +1,137 @@
+[
+  {
+    "fName": "Krishnakp",
+    "lName": "Kp34",
+    "email": "krishkris2001@gmail.com",
+    "contact": "3232322312",
+    "pwd": "Krishkp@1",
+    "cpwd": "Krishkp@1",
+    "Datepicker": "2024-02-25T06:00:00.000Z",
+    "gender": "female",
+    "skill": [
+      "reactjs"
+    ],
+    "resume": {
+      "0": {}
+    },
+    "id": 1
+  },
+  {
+    "fName": "Krish",
+    "lName": "Kp3",
+    "email": "krishkrishnan2001@gmail.com",
+    "contact": "32323223",
+    "pwd": "Krishkp@1",
+    "cpwd": "Krishkp@1",
+    "Datepicker": "2024-02-25T06:00:00.000Z",
+    "gender": "female",
+    "skill": [
+      "reactjs"
+    ],
+    "resume": {
+      "0": {}
+    },
+    "id": 2
+  },
+  {
+    "fName": "Lilly",
+    "lName": "Lidya",
+    "email": "lilly@mail.com",
+    "contact": "131883181",
+    "pwd": "lilly@123",
+    "cpwd": "lilly@123",
+    "Datepicker": "2018-03-12T05:00:00.000Z",
+    "gender": "female",
+    "skill": [
+      "reactjs",
+      "vuejs"
+    ],
+    "resume": {},
+    "id": 3
+  },
+  {
+    "fName": "Lilly",
+    "lName": "Lidya",
+    "email": "lilly@mail.com",
+    "contact": "131883181",
+    "pwd": "lilly@123",
+    "cpwd": "lilly@123",
+    "Datepicker": "2018-03-12T05:00:00.000Z",
+    "gender": "female",
+    "skill": [
+      "reactjs",
+      "vuejs"
+    ],
+    "resume": {},
+    "id": 4
+  },
+  {
+    "fName": "Lilly",
+    "lName": "Lidya",
+    "email": "lilly@mail.com",
+    "contact": "131883181",
+    "pwd": "lilly@123",
+    "cpwd": "lilly@123",
+    "Datepicker": "2018-03-12T05:00:00.000Z",
+    "gender": "female",
+    "skill": [
+      "reactjs",
+      "vuejs"
+    ],
+    "resume": {
+      "0": {}
+    },
+    "id": 5
+  },
+  {
+    "fName": "Lilly",
+    "lName": "Lidya",
+    "email": "lilly@mail.com",
+    "contact": "131883181",
+    "pwd": "lilly@123",
+    "cpwd": "lilly@123",
+    "Datepicker": "2018-03-12T05:00:00.000Z",
+    "gender": "female",
+    "skill": [
+      "reactjs",
+      "vuejs"
+    ],
+    "resume": {
+      "0": {}
+    },
+    "id": 6
+  },
+  {
+    "fName": "Lilly",
+    "lName": "Lidya",
+    "email": "lilly@mail.com",
+    "contact": "131883181",
+    "pwd": "lilly@123",
+    "cpwd": "lilly@123",
+    "Datepicker": "2018-03-12T05:00:00.000Z",
+    "gender": "female",
+    "skill": [
+      "reactjs",
+      "vuejs"
+    ],
+    "resume": {
+      "0": {}
+    },
+    "id": 8
+  },
+  {
+    "fName": "Pavi",
+    "lName": "123",
+    "email": "pavi@gmail.com",
+    "contact": "12213132",
+    "pwd": "pavi@123",
+    "cpwd": "pavi@123",
+    "Datepicker": "2001-05-31T05:00:00.000Z",
+    "gender": "female",
+    "skill": [
+      "nodejs"
+    ],
+    "resume": {},
+    "id": 9
+  }
+]

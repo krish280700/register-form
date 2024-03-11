@@ -6,6 +6,7 @@ export const formData = [
         placeholder: 'Enter your First Name',
         type: 'text',
         isRequired: true,
+        formType: ['Add', 'Edit'],
         validations: {required: 'This field is required', minLength:{value:3, message:'Minimum 3 characters required'}, maxLength: {value:20, message:'Maximum 20 characters'}}
     },
     {
@@ -15,6 +16,7 @@ export const formData = [
         type: 'text',
         placeholder: 'Enter your Last Name',
         isRequired: true,
+        formType: ['Add', 'Edit'],
         validations: {required: 'This field is required',minLength:{value:3, message:'Minimum 3 characters required'}, maxLength: {value:20, message:'Maximum 20 characters'}}
     },
     {
@@ -24,6 +26,7 @@ export const formData = [
         type: 'email',
         placeholder: 'Enter your email',
         isRequired: true,
+        formType: ['Add', 'Edit'],
         validations: {required: 'This field is required', pattern:{value: /\S+@\S+\.\S+/, message: 'This is not a valid email'} }
     },
     {
@@ -33,6 +36,7 @@ export const formData = [
         type: 'text',
         placeholder: 'Enter your Contact Number',
         isRequired: true,
+        formType: ['Add', 'Edit'],
         validations: {pattern: {value:/^(0|[1-9]\d*)(\.\d+)?$/, message:'This field only contains Numbers'}, maxLength: {value:20, message:'Maximum 20 characters'}}
     },
     {
@@ -42,6 +46,7 @@ export const formData = [
         type: 'password',
         placeholder: 'Set your password',
         isRequired: true,
+        formType: ['Add'],
         validations: {required: 'This field is required',minLength:{value:8, message:'Minimum 8 characters required'}, maxLength: {value:20, message:'Maximum 20 characters'}}
     },
     {
@@ -49,6 +54,7 @@ export const formData = [
         name: 'cpwd',
         value: '',
         type: 'text',
+        formType: ['Add'],
         placeholder: 'Confirm Password',
         isRequired: true,
         validations: {
@@ -65,6 +71,7 @@ export const formData = [
         name: 'dob',
         value: '',
         type: 'date',
+        formType: ['Add', 'Edit'],
         placeholder: 'mm-dd-yyyy',
         isRequired: false,
         validations: {}
@@ -74,6 +81,7 @@ export const formData = [
         name: 'gender',
         value: '',
         type: 'radio',
+        formType: ['Add', 'Edit'],
         options:[{name: 'Male', id: '1', value: 'male'}, {name: 'Female', id: '2', value: 'female'}, {value: 'others', id: '3', name: 'Others'}, {name: 'Prefer not to say', value: 'pnts', id: '4'}],
         placeholder: '',
         isRequired: false,
@@ -84,6 +92,7 @@ export const formData = [
         name: 'skill',
         value: '',
         type: 'checkbox',
+        formType: ['Add', 'Edit'],
         options:[{name: 'React JS', id: '11', value: 'reactjs'}, {name: 'Vue JS', id: '12', value: 'vuejs'}, {name: 'Node JS', id: '13', value: 'nodejs'}],
         placeholder: '',
         isRequired: false,
@@ -94,6 +103,7 @@ export const formData = [
         name: 'description',
         value: '',
         type: 'textarea',
+        formType: ['Add', 'Edit'],
         options:[],
         placeholder: 'If you want to highlight anything, write here!',
         isRequired: false,
@@ -104,6 +114,7 @@ export const formData = [
         name: 'resume',
         value: '',
         type: 'file',
+        formType: ['Add', 'Edit'],
         options: [],
         placeholder: 'Upload your resume here',
         isRequired: true,

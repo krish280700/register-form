@@ -1,50 +1,74 @@
 'use client'
 
+import Link from 'next/link';
+import {PencilSquareIcon, TrashIcon} from '@heroicons/react/16/solid'
 import Header from '@/app/Layout/header'
-import Formgroup from './Components/formGroup';
-import {formData} from '@/app/Data/formData'
 import { useState, useEffect } from 'react';
-import { useForm } from "react-hook-form";
-
 
 export default function Home() {
-	
-	// const [formVal, setFormVal] = useState({})
-	const { register, handleSubmit, watch, control, formState: { errors } } = useForm();
-	
-	// const onSubmit = async (data) => {
-		
-	// 	try {
-	// 		const response = await fetch('/Pages/api/form', {
-	// 		  method: 'POST',
-	// 		  headers: {
-	// 			'Content-Type': 'application/json',
-	// 		  },
-	// 		  body: JSON.stringify(data),
-	// 		});
-	  
-	// 		if (!response.ok) {
-	// 		  throw new Error('Something went wrong');
-	// 		}
-	  
-	// 		// Handle successful response, if needed
-	// 	  } catch (error) {
-	// 		console.error('Error:', error.message);
-	// 	}
-	// }
+	const [data, setData] = useState([])
 
+	useEffect(() => {
+		fetch('/api/form', {method: 'GET'})
+			.then((res) => {
+				return res.json()
+			}).then((res) => {
+				setData(res.data)
+			})
+	}, [])
+
+	const handleDelete = (id) => {
+		fetch(`http://localhost:3000/api/form/${id}`, {method: 'DELETE'}).then(res => res.json())
+			.then(res => {
+				setData(res.data)
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	}
+	
     return (
 		<>
 			<Header />
 			<div className='container mx-auto my-4 p-4 bg-white'>
-				<form onSubmit={handleSubmit(onSubmit)} className='px-32 py-16'>
-					{
-						formData && formData.length && formData.map((form, key) => {
-							return <Formgroup form={form} watch={watch} control={control} error={errors} key={key} register={register} />
-						})
-					}
-					<button type='submit' className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Submit</button>
-				</form>
+				<h1 className='text-black'>Welcome to Register site</h1>
+				<table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-5'>
+					<thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-black dark:text-gray-400'>
+						<tr>
+							<th className='px-6 py-3'>ID</th>
+							<th className='px-6 py-3'>First Name</th>
+							<th className='px-6 py-3'>Last Name</th>
+							<th className='px-6 py-3'>Email</th>
+							<th className='px-6 py-3'>Contact</th>
+							<th className='px-6 py-3'>DOB</th>
+							<th className='px-6 py-3'>Gender</th>
+							<th className='px-6 py-3'>Skill</th>
+							<th className='px-6 py-3'>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							data && data.length && data.map((item) => {
+								return (
+									<tr key={item.id} className='odd:dark:bg-gray-900 even:dark:bg-gray-800 border-b dark:border-gray-700'>
+										<td className='px-6 py-4'>{item.id}</td>
+										<td className='px-6 py-4'>{item.fName}</td>
+										<td className='px-6 py-4'>{item.lName}</td>
+										<td className='px-6 py-4'>{item.email}</td>
+										<td className='px-6 py-4'>{item.contact}</td>
+										<td className='px-6 py-4'>{item.Datepicker}</td>
+										<td className='px-6 py-4'>{item.gender}</td>
+										<td className='px-6 py-4'>{item.skills}</td>
+										<td className='px-6 py-4 flex'>
+											<Link href={`/edit/${item.id}`}><PencilSquareIcon className='h-5 cursor-pointer'/></Link>
+											<TrashIcon className='h-5 ml-2 cursor-pointer' onClick={() => handleDelete(item.id)}/>
+										</td>
+									</tr>
+								)
+							})
+						}
+					</tbody>
+				</table>
 			</div>
 		</>
     );
