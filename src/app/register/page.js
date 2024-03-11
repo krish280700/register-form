@@ -13,6 +13,7 @@ export default function Register(){
 	const router = useRouter()
 
 	const onSubmit = async (data) => {
+		console.log(data, 'data')
 		try {
 			const response = await fetch('/api/form', {
 			  method: 'POST',
@@ -45,7 +46,7 @@ export default function Register(){
 							})
 						}
 						<button type='submit' className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Submit</button>
-						<Link href='/' className='bg-gray-500 ml-2 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded'>Back</Link>
+						<Link href='/' className='bg-gray-500 ml-2 hover:bg-gray-700 text-white font-bold py-2.5 px-4 rounded'>Back</Link>
 					</form>
 			</div>
         </>

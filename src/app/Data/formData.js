@@ -37,7 +37,7 @@ export const formData = [
         placeholder: 'Enter your Contact Number',
         isRequired: true,
         formType: ['Add', 'Edit'],
-        validations: {pattern: {value:/^(0|[1-9]\d*)(\.\d+)?$/, message:'This field only contains Numbers'}, maxLength: {value:20, message:'Maximum 20 characters'}}
+        validations: {pattern: {value:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im, message:'This field is invalid'}, maxLength: {value:12, message:'Maximum 12 characters'}}
     },
     {
         label: 'Password',
@@ -77,6 +77,30 @@ export const formData = [
         validations: {}
     },
     {
+        label: 'Country',
+        name: 'country',
+        value: '',
+        type: 'select',
+        isMultiSelect: false,
+        formType: ['Add', 'Edit'],
+        options:[{id:21, label: 'USA', value: 'USA'},{id:22, label: 'India',  value: 'India'},{id:23, label: 'China',  value: 'China'},{id:24, label: 'Japan',  value: 'Japan'},{id:25, label: 'Europe',  value: 'Europe'},{id:26, label: 'Australia',  value: 'Australia'}],
+        placeholder: 'Select your country',
+        isRequired: false,
+        validations: {}
+    },
+    {
+        label: 'Language',
+        name: 'language',
+        value: '',
+        type: 'select',
+        isMultiSelect: true,
+        formType: ['Add', 'Edit'],
+        options:[{id:31, label: 'English', value: 'English'},{id:32, label: 'Hindi',  value: 'Hindi'},{id:33, label: 'Tamil',  value: 'Tamil'},{id:34, label: 'Telugu',  value: 'Telugu'},{id:35, label: 'Malayalam',  value: 'Malayalam'},{id:36, label: 'Kannadam',  value: 'Kannadam'}],
+        placeholder: 'Select your language',
+        isRequired: false,
+        validations: {}
+    },
+    {
         label: 'Gender',
         name: 'gender',
         value: '',
@@ -109,15 +133,4 @@ export const formData = [
         isRequired: false,
         validations: {}
     },
-    {
-        label: 'Resume',
-        name: 'resume',
-        value: '',
-        type: 'file',
-        formType: ['Add', 'Edit'],
-        options: [],
-        placeholder: 'Upload your resume here',
-        isRequired: true,
-        validations: {required: 'This field is required'}
-    }
 ]

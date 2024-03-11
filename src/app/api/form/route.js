@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import {getAllData, getDataById, createData, updateData, deleteData} from '@/app/Utilities/crud'
+import {getAllData, createData} from '@/app/Utilities/crud'
 
 export const POST = async (req, res) => {
 	let data = await req.json()

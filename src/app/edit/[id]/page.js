@@ -21,12 +21,18 @@ export default function Edit({params}){
 	
 	const onSubmit = async (data) => {
 		try {
+			const formData = new FormData()
+			for (const key in data) {
+				if (data.hasOwnProperty(key)) {
+				  formData.append(key, data[key]);
+				}
+			  }
 			const response = await fetch(`http://localhost:3000/api/form/${params.id}`, {
 			  method: 'POST',
 			  headers: {
-				'Content-Type': 'application/json',
+				'Content-Type': `multipart/form-data; boundary=${"--------------------------" + Date.now().toString(16)}`
 			  },
-			  body: JSON.stringify(data),
+			  body: formData,
 			});
 			
 			if (!response.ok) {
@@ -35,7 +41,6 @@ export default function Edit({params}){
 				router.push('/')
 			}
 	  
-			// Handle successful response, if needed
 		  } catch (error) {
 			console.error('Error:', error.message);
 		}
@@ -54,7 +59,7 @@ export default function Edit({params}){
                         })
                     }
                     <button type='submit' className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Submit</button>
-                    <Link href='/' className='bg-gray-500 ml-2 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded'>Back</Link>
+                    <Link href='/' className='bg-gray-500 ml-2 hover:bg-gray-700 text-white font-bold py-2.5 px-4 rounded'>Back</Link>
 				</form>
 			</div>
         </>

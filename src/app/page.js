@@ -32,43 +32,48 @@ export default function Home() {
 			<Header />
 			<div className='container mx-auto my-4 p-4 bg-white'>
 				<h1 className='text-black'>Welcome to Register site</h1>
-				<table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-5'>
-					<thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-black dark:text-gray-400'>
-						<tr>
-							<th className='px-6 py-3'>ID</th>
-							<th className='px-6 py-3'>First Name</th>
-							<th className='px-6 py-3'>Last Name</th>
-							<th className='px-6 py-3'>Email</th>
-							<th className='px-6 py-3'>Contact</th>
-							<th className='px-6 py-3'>DOB</th>
-							<th className='px-6 py-3'>Gender</th>
-							<th className='px-6 py-3'>Skill</th>
-							<th className='px-6 py-3'>Actions</th>
-						</tr>
-					</thead>
-					<tbody>
-						{
-							data && data.length && data.map((item) => {
-								return (
-									<tr key={item.id} className='odd:dark:bg-gray-900 even:dark:bg-gray-800 border-b dark:border-gray-700'>
-										<td className='px-6 py-4'>{item.id}</td>
-										<td className='px-6 py-4'>{item.fName}</td>
-										<td className='px-6 py-4'>{item.lName}</td>
-										<td className='px-6 py-4'>{item.email}</td>
-										<td className='px-6 py-4'>{item.contact}</td>
-										<td className='px-6 py-4'>{item.Datepicker}</td>
-										<td className='px-6 py-4'>{item.gender}</td>
-										<td className='px-6 py-4'>{item.skills}</td>
-										<td className='px-6 py-4 flex'>
-											<Link href={`/edit/${item.id}`}><PencilSquareIcon className='h-5 cursor-pointer'/></Link>
-											<TrashIcon className='h-5 ml-2 cursor-pointer' onClick={() => handleDelete(item.id)}/>
-										</td>
-									</tr>
-								)
-							})
-						}
-					</tbody>
-				</table>
+				<div>
+					<table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-5'>
+						<thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-black dark:text-gray-400'>
+							<tr>
+								<th className='px-6 py-3'>ID</th>
+								<th className='px-6 py-3'>First Name</th>
+								<th className='px-6 py-3'>Last Name</th>
+								<th className='px-6 py-3'>Email</th>
+								<th className='px-6 py-3'>Contact</th>
+								<th className='px-6 py-3'>Country</th>
+								<th className='px-6 py-3'>DOB</th>
+								<th className='px-6 py-3'>Gender</th>
+								<th className='px-6 py-3'>Skill</th>
+								<th className='px-6 py-3'>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							{
+								(data && data.length) ? data.map((item) => {
+									return (
+										<tr key={item.id} className='odd:dark:bg-gray-900 even:dark:bg-gray-800 border-b dark:border-gray-700'>
+											<td className='px-6 py-4'>{item.id}</td>
+											<td className='px-6 py-4'>{item.fName}</td>
+											<td className='px-6 py-4'>{item.lName}</td>
+											<td className='px-6 py-4'>{item.email}</td>
+											<td className='px-6 py-4'>{item.contact}</td>
+											<td className='px-6 py-4'>{item.country}</td>
+											<td className='px-6 py-4'>{new Date(item.dob).toISOString().split('T')[0]}</td>
+											<td className='px-6 py-4'>{item.gender}</td>
+											<td className='px-6 py-4'>{item.skill.map((skill) => skill).join(', ')}</td>
+											<td className='px-6 py-4 flex'>
+												<Link href={`/edit/${item.id}`}><PencilSquareIcon className='h-5 cursor-pointer'/></Link>
+												<TrashIcon className='h-5 ml-2 cursor-pointer' onClick={() => handleDelete(item.id)}/>
+											</td>
+										</tr>
+									)
+								})
+								: <tr></tr>
+							}
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</>
     );
