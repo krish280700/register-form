@@ -1,10 +1,25 @@
 import { Controller } from 'react-hook-form';
+// import {countryOptions} from '@/app/Data/dropdownOptions'
 import Datepicker from 'react-datepicker'
-import Select from 'react-select'
+import Select from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function Input({form, register, control}){
-    const {type, label, placeholder, name, options, validations, isMultiSelect} = form
+export default function Input({form, register, control, setValue, getValue, countryOpt, handleDependent}){
+
+    const {type, label, placeholder, name, options, validations, isMultiSelect, isDynamicCreate} = form
+
+    const handleCreateOptions = (name, option, value) => {
+        options.push({label: option, value:option})
+        if(isMultiSelect){
+            let selectedVal = getValue(name)
+            selectedVal = selectedVal?.length ? selectedVal : []
+            setValue(name, [...selectedVal, option])
+        }else{
+            setValue(name, option)
+        }
+    }
+
     switch (type) {
         case 'radio':
         case 'checkbox':
@@ -51,14 +66,35 @@ export default function Input({form, register, control}){
                         control={control}
                         name={name}
                         render={({field : {onChange, value}}) => (
-                            <Select
+                            isDynamicCreate ?
+                            // Create option dynamically
+                            <CreatableSelect
                                 options={options}
                                 isMulti={isMultiSelect}
-                                value={isMultiSelect ? options.filter(opt => value?.includes(opt.value)
-                                )  : options.find(opt => opt.value == value)}
+                                value={options.filter(opt => value?.includes(opt.value))}
                                 onChange={(selectedOptions) => {
                                     isMultiSelect ? onChange(selectedOptions.map(option => option.value))
-                                        : onChange(selectedOptions.value)
+                                        : onChange(selectedOptions)
+                                }}
+                                onCreateOption={(created, val) => handleCreateOptions(name, created, val)}
+                                placeholder={placeholder} />
+                            :
+                            <Select
+                                options={ name == 'country' ? countryOpt : options}
+                                isMulti={isMultiSelect}
+                                isSearchable
+                                getOptionLabel={ (option) => option.name}
+                                getOptionValue={ (option) => option}
+                                value={isMultiSelect ? 
+                                    options.filter(opt => value?.includes(opt.value))  
+                                    : 
+                                    options.find(opt => opt.value == value)}
+                                onChange={(selectedOptions) => {
+                                    isMultiSelect ? 
+                                    onChange(selectedOptions.map(option => option.value))
+                                    : onChange(selectedOptions)
+
+                                    handleDependent(form,selectedOptions)
                                   }}
                                 placeholder={placeholder}/>
                     )}/>

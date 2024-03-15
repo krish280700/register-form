@@ -46,6 +46,10 @@ export default function Edit({params}){
 		}
 	}
 
+	const handleDependent = (field) => {
+        console.log(field)
+    }
+
     return (
         <>
 			<Header />
@@ -54,7 +58,7 @@ export default function Edit({params}){
                     {
                         formData && formData.length && formData.map((form, key) => {
                             return (
-                                form.formType.includes('Edit') ? <Formgroup form={form} watch={watch} control={control} error={errors} key={key} register={register} /> : ''
+                                form.formType.includes('Edit') ? <Formgroup form={form} watch={watch} handleDependent={handleDependent} control={control} error={errors} key={key} register={register} /> : ''
                             )
                         })
                     }

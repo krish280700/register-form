@@ -38,5 +38,26 @@
     ],
     "description": "Avinash",
     "id": 2
+  },
+  {
+    "fName": "Krishna",
+    "lName": "krish",
+    "email": "Krish@mail.com",
+    "contact": "1211381882",
+    "pwd": "Krish@1234",
+    "cpwd": "Krish@1234",
+    "dob": "2000-06-28T05:00:00.000Z",
+    "country": "India",
+    "language": [
+      "Tamil",
+      "English"
+    ],
+    "gender": "Male",
+    "skill": [
+      "Vue JS",
+      "Node JS"
+    ],
+    "description": "Simple Note",
+    "id": 4
   }
 ]
